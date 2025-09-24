@@ -4,20 +4,21 @@
  * @return {boolean[]}
  */
 var kidsWithCandies = function(candies, extraCandies) {
-    let newArr = Array(candies.length).fill(true);
+    let newArr = [];
     let val = 0;
+    let boolval = null;
     for(let i=0; i<candies.length; i++) {
-        val = candies[i] + extraCandies;
+        val = extraCandies + candies[i];
         for(let j=0; j<candies.length; j++) {
-            if(i != j) {
-                if(val < candies[j]) {
-                    console.log('val--------', candies[j], j)
-                    newArr[i] = false;
-                    break;
-                }
+            if(val >= candies[j]) {
+                boolval = true;
+            } else {
+                boolval = false;
+                break;
             }
         }
+        newArr[i] = boolval;
     }
-    console.log('ARR----------', newArr);
     return newArr;
+    
 };
